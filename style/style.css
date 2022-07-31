@@ -1,0 +1,147 @@
+body {
+  background: #323437;
+  margin: 0;
+  height: 100vh;
+}
+
+:root {
+  --backgroundStart: rgb(75, 75, 245);
+}
+
+* {
+  font-family: cursive;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.refresh {
+  user-select: none;
+  font-family: Lucida Sans Unicode;
+  font-size: 25px;
+  font-weight: bold;
+  transform: rotate(60deg);
+  color: white;
+  background: 0;
+  border: 0;
+  outline: none;
+}
+
+.refresh-start {
+  transform: rotate(420deg);
+  transition: transform 0.45s ease-in-out;
+}
+
+.text {
+  position: relative;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid white;
+  display: flex;
+}
+
+.text p {
+  margin: 0;
+  max-width: 1470px;
+}
+
+.text p span {
+  font-size: 35px;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.text .done {
+  color: rgb(30, 69, 243)!important;
+}
+
+.errors {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.timer {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.caps {
+  position: absolute;
+  top: 0;
+  display: none;
+  color: rgb(30, 69, 243);
+  font-size: 20px;
+}
+
+.start-container {
+  background: #323437;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0px);
+  justify-content: center;
+  color: white;
+  align-items: center;
+  transition: transform 0.4s ease-out;
+}
+
+.move-up {
+  transform: translateY(-1100px);
+  transition: transform 0.4s ease-out;
+}
+
+.start-container .start-btn {
+  outline: none;
+  cursor: pointer;
+  background: var(--backgroundStart);
+  border: 0;
+  border-radius: 30px;
+  color: white;
+  padding: 15px 25px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.start-container p {
+  margin: 15px;
+}
+
+.start-container input[type="number"] {
+  margin-bottom: 35px;
+  border-radius: 15px;
+  outline: 0;
+  text-align: center;
+  background: var(--backgroundStart);
+  border: 0;
+  width: 230px;
+  color: white;
+  height: 60px;
+  font-size: 20px;
+}
+
+.start-container input[type="checkbox"] {
+  height: 60px;
+  width: 60px;
+}
+
+.start-container input::-webkit-outer-spin-button,
+.start-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.start-container input[type="number"]::placeholder {
+  font-size: 20px;
+  color: white;
+}
