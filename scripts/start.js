@@ -19,8 +19,6 @@ function start() {
 
   numberCount.type = "number"
   numberCount.value = "10"
-  numberCount.min = "1"
-  numberCount.max = "120"
   startCon.appendChild(numberCount)
   numberCount.addEventListener("input", () => {
     if (numberCount.value > 120) numberCount.value = 120

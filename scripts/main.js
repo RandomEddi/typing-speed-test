@@ -53,6 +53,8 @@ btnStart.onclick = (event) => {
 }
 
 refresh.onclick = () => {
+  clearInterval(timer)
+  document.removeEventListener("keydown", typing)
   if (refresh.classList.contains("refresh-start")) return
   refresh.classList.add("refresh-start")
   setTimeout(() => {
@@ -69,7 +71,7 @@ function typing(event) {
     done.textContent += queue.textContent[0]
     queue.textContent = queue.textContent.slice(1)
   } else {
-    if (event.key != "Shift" && event.key != "CapsLock") {
+    if (event.key != "Shift" && event.key != "CapsLock" && event.key != "Alt") {
       errors++
       document.body.style.background = "#5a5d63"
       error.textContent = `Errors: ${errors}`
