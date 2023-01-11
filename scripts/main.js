@@ -49,6 +49,7 @@ btnStart.onclick = (event) => {
   queue.textContent = splitedWords
   queue.focus()
 
+  document.addEventListener("keyup", typing)
   document.addEventListener("keydown", typing)
 }
 
@@ -60,34 +61,40 @@ refresh.onclick = () => {
   setTimeout(() => {
     startCon.classList.remove("move-up")
     refresh.classList.remove("refresh-start")
+
     btnStart.focus()
   }, 400)
 }
 
 function typing(event) {
-  event.preventDefault()
-  capsChecker(event)
-  if (event.key == queue.textContent[0]) {
-    done.textContent += queue.textContent[0]
-    queue.textContent = queue.textContent.slice(1)
-  } else {
-    if (event.key != "Shift" && event.key != "CapsLock" && event.key != "Alt") {
-      errors++
-      document.body.style.background = "#5a5d63"
-      error.textContent = `Errors: ${errors}`
-      setTimeout(() => {
-        document.body.style.background = ""
-      }, 250)
+  if (event.keyCode == 20) {
+    capsChecker(event);
+  }
+  else {
+    event.preventDefault();
+    if (event.key == queue.textContent[0]) {
+      done.textContent += queue.textContent[0]
+      queue.textContent = queue.textContent.slice(1)
+    } else {
+      if (event.key != "Shift" && event.key != "CapsLock" && event.key != "Alt") {
+        errors++
+        document.body.style.background = "#5a5d63"
+        error.textContent = `Errors: ${errors}`
+        setTimeout(() => {
+          document.body.style.background = ""
+        }, 250)
+      }
+    }
+    if (queue.textContent == "") {
+      clearInterval(timer)
+      timeStarted = false
+      document.removeEventListener("keydown", typing)
+      refresh.style.fontSize = 100 + "px"
+      document.querySelector(".text").style.display = "none"
+      refresh.focus()
     }
   }
-  if (queue.textContent == "") {
-    clearInterval(timer)
-    timeStarted = false
-    document.removeEventListener("keydown", typing)
-    refresh.style.fontSize = 100 + "px"
-    document.querySelector(".text").style.display = "none"
-    refresh.focus()
-  }
+
 }
 
 function timerBegin() {
@@ -119,6 +126,6 @@ function capsChecker(e) {
   if (e.getModifierState && e.getModifierState("CapsLock")) {
     caps.style.display = "block"
   } else {
-    caps.style.display = ""
+    caps.style.display = "none"
   }
 }
